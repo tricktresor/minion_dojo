@@ -3,6 +3,8 @@ Creating Minions to show the power of object inheritance and interfaces
 
 This programming demonstration has been created in a 90 minutes code-dojo where a lot of developers had to fullfill the following tasks:
 
+![minions](https://github.com/tricktresor/minion_dojo/blob/master/MinionLogo_Transparent.png)
+
 Create minions!
 
 Minions have one or two eyes.
@@ -15,6 +17,8 @@ Minions have special equipment
 Minions can become evil caused by the mutagen PX-41.
 
 Use classes and interfaces and inheritance to create apropriate classes with some senseful beahviour.
+
+![Minion overview](https://github.com/tricktresor/minion_dojo/blob/master/minions.png)
 
 # Maics solution
 Maic uses global classes and interfaces
