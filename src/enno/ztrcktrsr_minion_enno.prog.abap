@@ -2,8 +2,20 @@ REPORT ztrcktrsr_minion_enno.
 
 
 SELECTION-SCREEN COMMENT /1(70) TEXT-i01.
-PARAMETERS p_name   TYPE c LENGTH 20 DEFAULT 'DAVE'.
+PARAMETERS p_name   TYPE c LENGTH 20 AS LISTBOX VISIBLE LENGTH 40.
 PARAMETERS p_banana TYPE i DEFAULT 3.
+
+INITIALIZATION.
+
+  "Set listbox with all available minions except of base class MINION
+  DATA(local_classes) = zcl_trcktrsr_minion_helper=>get_local_classes_of_report( sy-cprog ).
+  CALL FUNCTION 'VRM_SET_VALUES'
+    EXPORTING
+      id              = 'P_NAME'
+      values          = VALUE vrm_values( FOR class IN local_classes WHERE ( table_line <> 'MINION' ) ( key = class text = class ) )
+    EXCEPTIONS
+      id_illegal_name = 1
+      OTHERS          = 2.
 
 CLASS minion DEFINITION.
   PUBLIC SECTION.
@@ -124,7 +136,7 @@ START-OF-SELECTION.
   ENDIF.
 
   DATA(text) = minion->speak( ).
-  WRITE: / minion->name, 'says "' no-GAP, text no-gap, '"'.
+  WRITE: / minion->name, 'says "' NO-GAP, text NO-GAP, '"'.
   DATA(eyes) = minion->how_many_eyes( ).
   WRITE: / minion->name, 'has', eyes, 'eyes'.
 
