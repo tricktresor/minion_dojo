@@ -73,14 +73,14 @@ CLASS ZCL_TRCKTRSR_MINION_BASE IMPLEMENTATION.
 
   METHOD introduce.
     DATA:
-      sound TYPE REF TO zif_mhz_minion_sound,
-      evil  TYPE REF TO zif_mhz_minion_evil.
+      sound TYPE REF TO zif_trcktrsr_minion_sound,
+      evil  TYPE REF TO zif_trcktrsr_minion_evil.
 
     intro = |Hello, my name is { me->name } and I have { me->get_n_o_eyes_as_text( ) }. |.
     IF me->tool IS BOUND.
       intro = intro && |I have a { tool->name }. |.
 
-      IF tool IS INSTANCE OF zif_mhz_minion_sound.
+      IF tool IS INSTANCE OF zif_trcktrsr_minion_sound.
         sound ?= tool.
         intro = intro && |It makes { sound->sound( ) } |.
       ENDIF.
